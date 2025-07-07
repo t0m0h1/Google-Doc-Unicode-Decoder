@@ -29,16 +29,22 @@ def extract_and_print_grid(google_doc_url):
         print("No valid data found in the document.")
         return
 
-
     max_x = max(p[0] for p in points)
     max_y = max(p[1] for p in points)
-
 
     grid = [[' ' for _ in range(max_x + 1)] for _ in range(max_y + 1)]
 
     for x, y, char in points:
         grid[y][x] = char
 
-    # Print grid 
+    # Print the grid line by line
     for row in grid:
         print(''.join(row))
+
+
+if __name__ == "__main__":
+    google_doc_url = "https://docs.google.com/document/d/e/2PACX-1vTER-wL5E8YC9pxDx43gk8eIds59GtUUk4nJo_ZWagbnrH0NFvMXIw6VWFLpf5tWTZIT9P9oLIoFJ6A/pub"
+    try:
+        extract_and_print_grid(google_doc_url)
+    except Exception as e:
+        print(f"Error: {e}")
